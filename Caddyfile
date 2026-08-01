@@ -1,7 +1,3 @@
-{
-  auto_https disable_redirects
-}
-https://localhost:8867 {
-  tls internal
+:8867 {
   reverse_proxy app:3000
 }

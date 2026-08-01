@@ -6,9 +6,17 @@ MVP de Photobooth 360 para administrar eventos, capturar fotos y videos desde el
 
 1. Copia `.env.example` a `.env` y ajusta las variables opcionales.
 2. Ejecuta `docker compose up --build -d`.
-3. Abre `https://localhost:8867` y acepta el certificado local generado por Caddy.
+3. Abre `http://localhost:8867`.
 
-La cámara del navegador requiere un contexto seguro. Por eso la instalación local usa HTTPS. `SECURE_COOKIE=false` queda definido según el requisito del entorno local; el MVP aún no emite cookies de autenticación.
+Si actualizas desde la versión HTTPS anterior, recrea los servicios para eliminar el proxy antiguo:
+
+```bash
+git pull
+docker compose down --remove-orphans
+docker compose up --build -d
+```
+
+El despliegue local funciona por HTTP y `SECURE_COOKIE=false`, pensado para Ubuntu dentro de una red controlada. El MVP aún no emite cookies de autenticación. Para acceder a la cámara desde otro equipo o publicar la aplicación en internet, se recomienda añadir HTTPS en el proxy frontal, porque los navegadores solo permiten cámara sin TLS cuando el sitio se abre como `localhost`.
 
 ## Google Drive
 
@@ -27,7 +35,7 @@ Al crear un evento, la app crea una subcarpeta exclusiva. Cada nueva captura se 
 - modo proyección fullscreen con actualización y rotación automáticas;
 - almacenamiento persistente mediante volúmenes Docker;
 - integración opcional con Google Drive mediante cuenta de servicio;
-- HTTPS local en el puerto 8867.
+- HTTP local en el puerto 8867.
 
 ## Alcance siguiente recomendado
 
