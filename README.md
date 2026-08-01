@@ -8,6 +8,8 @@ MVP de Photobooth 360 para administrar eventos, capturar fotos y videos desde el
 2. Ejecuta `docker compose up --build -d`.
 3. Abre `http://localhost:8867`.
 
+Si los invitados escanearán el QR desde otros equipos, define en `.env` una URL accesible en la red, por ejemplo `APP_URL=http://192.168.1.50:8867`. No uses `localhost` para ese caso, porque en el teléfono apuntaría al propio teléfono.
+
 Si actualizas desde la versión HTTPS anterior, recrea los servicios para eliminar el proxy antiguo:
 
 ```bash
@@ -36,6 +38,20 @@ Al crear un evento, la app crea una subcarpeta exclusiva. Cada nueva captura se 
 - almacenamiento persistente mediante volúmenes Docker;
 - integración opcional con Google Drive mediante cuenta de servicio;
 - HTTP local en el puerto 8867.
+
+## Marcos y logos
+
+Los marcos incluidos están en `public/frames/`: Gala, Matrimonio, Bautizo, San Valentín, Cumpleaños y Otros eventos. Para sumar una plantilla, agrega un PNG, WebP o SVG transparente en esa carpeta y registra su ruta en `components/EventForm.tsx`.
+
+Medidas recomendadas:
+
+- vertical: 1080 × 1920 px;
+- cuadrado: 1080 × 1080 px;
+- horizontal: 1920 × 1080 px;
+- PNG, WebP o SVG transparente, máximo sugerido 5 MB;
+- dejar transparente el área central y un margen seguro mínimo de 80 px.
+
+Para logos se recomienda PNG, WebP o SVG transparente, de 400 a 1000 px de ancho y máximo 2 MB. Se pueden cargar como archivo o URL y ubicar en cualquiera de las cuatro esquinas.
 
 ## Alcance siguiente recomendado
 

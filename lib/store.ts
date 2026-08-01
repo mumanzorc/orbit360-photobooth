@@ -12,4 +12,5 @@ export async function getEvent(id:string){return (await read()).events.find(e=>e
 export async function createEvent(event:BoothEvent){const db=await read();db.events.unshift(event);await write(db);return event;}
 export async function updateEvent(id:string, patch:Partial<BoothEvent>){const db=await read();const i=db.events.findIndex(e=>e.id===id);if(i<0)return null;db.events[i]={...db.events[i],...patch};await write(db);return db.events[i];}
 export async function listMedia(eventId:string){return (await read()).media.filter(m=>m.eventId===eventId).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));}
+export async function getMedia(id:string){return (await read()).media.find(m=>m.id===id);}
 export async function addMedia(item:MediaItem){const db=await read();db.media.unshift(item);await write(db);return item;}

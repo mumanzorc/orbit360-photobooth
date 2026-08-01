@@ -9,3 +9,4 @@ certs/*
 !certs/.gitkeep
 *.log
 *.tsbuildinfo
+/outputs/

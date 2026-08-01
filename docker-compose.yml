@@ -3,7 +3,7 @@ services:
     build: .
     restart: unless-stopped
     environment:
-      APP_URL: http://localhost:8867
+      APP_URL: ${APP_URL:-http://localhost:8867}
       SECURE_COOKIE: "false"
       DATA_DIR: /app/data
       MEDIA_DIR: /app/public/media
