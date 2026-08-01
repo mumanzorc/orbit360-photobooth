@@ -1,0 +1,11 @@
+node_modules
+.next
+.env
+data/*
+!data/.gitkeep
+public/media/*
+!public/media/.gitkeep
+certs/*
+!certs/.gitkeep
+*.log
+*.tsbuildinfo
