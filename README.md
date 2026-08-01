@@ -35,6 +35,8 @@ Al crear un evento, la app crea una subcarpeta exclusiva. Cada nueva captura se 
 - código QR único que dirige a la galería compartible;
 - galería responsive con descarga de archivos;
 - modo proyección fullscreen con actualización y rotación automáticas;
+- modo de proyección en vivo desde la cámara de la cabina y selector para alternar con fotos/videos guardados;
+- carga fragmentada de videos para funcionar detrás de proxies con límites de tamaño estrictos;
 - almacenamiento persistente mediante volúmenes Docker;
 - integración opcional con Google Drive mediante cuenta de servicio;
 - HTTP local en el puerto 8867.

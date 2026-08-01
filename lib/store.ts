@@ -14,3 +14,4 @@ export async function updateEvent(id:string, patch:Partial<BoothEvent>){const db
 export async function listMedia(eventId:string){return (await read()).media.filter(m=>m.eventId===eventId).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));}
 export async function getMedia(id:string){return (await read()).media.find(m=>m.id===id);}
 export async function addMedia(item:MediaItem){const db=await read();db.media.unshift(item);await write(db);return item;}
+export async function updateMedia(id:string,patch:Partial<MediaItem>){const db=await read();const index=db.media.findIndex(m=>m.id===id);if(index<0)return null;db.media[index]={...db.media[index],...patch};await write(db);return db.media[index];}
