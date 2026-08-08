@@ -1,3 +1,4 @@
-import { NextResponse } from 'next/server';import { getEvent,updateEvent } from '@/lib/store';
+import { NextResponse } from 'next/server';import { currentUser } from '@/lib/auth';import { deleteEvent,getEvent,updateEvent } from '@/lib/store';
 export async function GET(_:Request,{params}:{params:Promise<{id:string}>}){const {id}=await params;const event=await getEvent(id);return event?NextResponse.json(event):NextResponse.json({error:'Evento no encontrado'},{status:404});}
 export async function PATCH(req:Request,{params}:{params:Promise<{id:string}>}){const {id}=await params;const event=await updateEvent(id,await req.json());return event?NextResponse.json(event):NextResponse.json({error:'Evento no encontrado'},{status:404});}
+export async function DELETE(_:Request,{params}:{params:Promise<{id:string}>}){if(!await currentUser())return NextResponse.json({error:'No autorizado'},{status:401});const {id}=await params;return NextResponse.json({ok:await deleteEvent(id)})}
