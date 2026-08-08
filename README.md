@@ -1,5 +1,11 @@
 # Orbit 360 Photobooth
 
+## Administración y acceso
+
+La página principal requiere sesión. En el primer arranque se crea el usuario definido por `ADMIN_USER` y `ADMIN_PASSWORD` (valores iniciales: `admin` / `admin360`). Cambia estas variables en `.env` antes de publicar.
+
+El panel incluye CRUD de usuarios, eventos y marcos. Cada evento tiene cabina, proyección y galería independientes. En la galería se pueden seleccionar uno o varios archivos para descargarlos o eliminarlos, además de renombrar cada captura.
+
 MVP de Photobooth 360 para administrar eventos, capturar fotos y videos desde el navegador, personalizar la experiencia, proyectar una galería en otra pantalla, compartir mediante QR y respaldar cada evento en su propia carpeta de Google Drive.
 
 ## Inicio rápido con Docker
