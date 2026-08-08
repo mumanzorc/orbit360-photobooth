@@ -1,0 +1,4 @@
+import {NextResponse} from 'next/server';import {randomUUID} from 'crypto';import {currentUser} from '@/lib/auth';import {listFrames,saveFrame} from '@/lib/store';
+const defaults=[['Gala','/frames/gala.svg'],['Matrimonio','/frames/matrimonio.svg'],['Bautizo','/frames/bautizo.svg'],['San Valentín','/frames/san-valentin.svg'],['Cumpleaños','/frames/cumpleanos.svg'],['Otros eventos','/frames/otros-eventos.svg']];
+export async function GET(){const custom=await listFrames();return NextResponse.json([...defaults.map(([name,url],i)=>({id:`default-${i}`,name,category:name,url,format:'9:16',createdAt:''})),...custom])}
+export async function POST(req:Request){if(!await currentUser())return NextResponse.json({error:'No autorizado'},{status:401});const b=await req.json();return NextResponse.json(await saveFrame({id:randomUUID(),name:b.name,category:b.category||'Otros',url:b.url,format:b.format||'9:16',createdAt:new Date().toISOString()}),{status:201})}

@@ -5,6 +5,8 @@ services:
     environment:
       APP_URL: ${APP_URL:-http://localhost:8867}
       SECURE_COOKIE: "false"
+      ADMIN_USER: ${ADMIN_USER:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin360}
       DATA_DIR: /app/data
       MEDIA_DIR: /app/public/media
       GOOGLE_DRIVE_ENABLED: ${GOOGLE_DRIVE_ENABLED:-false}

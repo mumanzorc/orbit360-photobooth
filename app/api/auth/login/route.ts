@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {COOKIE,login} from '@/lib/auth';
+export async function POST(req:Request){const {username,password}=await req.json();const result=await login(String(username||''),String(password||''));if(!result)return NextResponse.json({error:'Usuario o contraseña incorrectos'},{status:401});const res=NextResponse.json(result.user);res.cookies.set(COOKIE,result.session.id,{httpOnly:true,sameSite:'lax',secure:process.env.SECURE_COOKIE==='true',path:'/',expires:new Date(result.session.expiresAt)});return res}
