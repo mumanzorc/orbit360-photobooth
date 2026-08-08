@@ -38,6 +38,7 @@ Al crear un evento, la app crea una subcarpeta exclusiva. Cada nueva captura se 
 - modo de proyección en vivo desde la cámara de la cabina y selector para alternar con fotos/videos guardados;
 - carga fragmentada de videos para funcionar detrás de proxies con límites de tamaño estrictos;
 - conversión automática mediante FFmpeg a MP4/H.264 compatible con móviles, galería y proyección;
+- grabación base sin audio ambiente para máxima compatibilidad móvil; la música se incorpora en el procesamiento posterior;
 - almacenamiento persistente mediante volúmenes Docker;
 - integración opcional con Google Drive mediante cuenta de servicio;
 - HTTP local en el puerto 8867.
